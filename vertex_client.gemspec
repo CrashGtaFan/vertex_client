@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = VertexClient::VERSION
   spec.authors       = ["Custom Ink"]
   spec.email         = ["technology@customink.com"]
-  spec.required_ruby_version = '>= 2.1'
+  spec.required_ruby_version = '>= 1.9.3'
   spec.summary       = %q{A Ruby Gem to integrate with the Vertex Cloud API}
   spec.description   = %q{The Vertex Client Ruby Gem provides an interface to integrate with Vertex Cloud's SOAP API.}
   spec.homepage      = "https://github.com/customink/vertex_client"
@@ -16,15 +16,17 @@ Gem::Specification.new do |spec|
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = 'https://rubygems.org'
+  if spec.rubygems_version.to_f >= 2
+    if spec.respond_to?(:metadata)
+      spec.metadata["allowed_push_host"] = 'https://rubygems.org'
 
-    spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/customink/vertex_client"
-    spec.metadata["changelog_uri"] = "https://github.com/customink/vertex_client/CHANGELOG.md"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
+      spec.metadata["homepage_uri"] = spec.homepage
+      spec.metadata["source_code_uri"] = "https://github.com/customink/vertex_client"
+      spec.metadata["changelog_uri"] = "https://github.com/customink/vertex_client/CHANGELOG.md"
+    else
+      raise "RubyGems 2.0 or newer is required to protect against " \
+        "public gem pushes."
+    end
   end
 
   # Specify which files should be added to the gem when it is released.
@@ -41,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "awesome_print"
   spec.add_development_dependency "circuitbox"
   spec.add_development_dependency "bundler"
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency spec.rubygems_version.to_f <= 2 ? "debugger" : "byebug"
   spec.add_development_dependency "dotenv"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mocha"

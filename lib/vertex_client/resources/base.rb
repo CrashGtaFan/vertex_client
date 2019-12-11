@@ -30,11 +30,11 @@ module VertexClient
       end
 
       def payload_type
-        Kernel.const_get("VertexClient::Payload::#{demodulized_class_name}")
+        "VertexClient::Payload::#{demodulized_class_name}".constantize
       end
 
       def response_type
-        Kernel.const_get("VertexClient::Response::#{demodulized_class_name}")
+        "VertexClient::Response::#{demodulized_class_name}".constantize
       end
 
       def demodulized_class_name

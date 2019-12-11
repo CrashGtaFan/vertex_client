@@ -5,7 +5,6 @@ require "dotenv/load"
 require "vertex_client"
 require "minitest/autorun"
 require "vcr"
-require 'byebug'
 require "mocha/minitest"
 SimpleCov.start
 

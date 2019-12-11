@@ -77,7 +77,7 @@ describe VertexClient do
         }
 
         # 'Not Open' means that we are actively hitting the service.
-        VertexClient.configuration.trusted_id  = '💩'
+        VertexClient.configuration.trusted_id  = 'trusted-id'
         refute VertexClient.circuit.open?
 
         # Exhaust the configured volume threshold to open the circuit.
