@@ -25,6 +25,7 @@ module VertexClient
         globals.convert_request_keys_to :camelcase
         globals.env_namespace :soapenv
         globals.namespace_identifier :urn
+        globals.ssl_version :TLSv1_2
         globals.open_timeout open_timeout if open_timeout.present?
         globals.read_timeout read_timeout if read_timeout.present?
       end
